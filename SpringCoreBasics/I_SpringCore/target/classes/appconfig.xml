@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id ="oone" class = "model.Order">
+		<property name="ordid">
+			<value>91</value>
+		</property>
+		<property name="ordname">
+			<value>Veg Pizza</value>
+		</property>
+	</bean>
+	<bean id="otwo" class="model.Order" p:ordid ="92" p:ordname = "Donut"></bean>
+	<bean id="othree" class="model.Order">
+		<constructor-arg value="93" type="int"></constructor-arg>
+		<constructor-arg value="Pasta" type="String"></constructor-arg>
+	</bean>
+	
+	<bean id="cone" class="model.Customer">
+		<property name="cid">
+			<value>11</value>
+		</property>
+		<property name="cname">
+			<value>Mahek</value>
+		</property>
+		<property name="ccity">
+			<value>Ooty</value>
+		</property>
+		
+		<property name="order" ref="oone"></property>
+	</bean>
+	<bean id="ctwo" class="model.Customer" p:cid="12" p:cname="Rohan" p:ccity="Sushi" p:order-ref="otwo"></bean>
+	<bean id="cthree" class="model.Customer">
+		<constructor-arg value="13" type="int"></constructor-arg>
+		<constructor-arg value="Pekka" type="String"></constructor-arg>
+		<constructor-arg value="Barbs" type="String"></constructor-arg>
+		<constructor-arg ref="othree" type="Order"></constructor-arg>
+	</bean>
+	
+</beans>

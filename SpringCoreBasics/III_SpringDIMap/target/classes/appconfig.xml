@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean name="ordone" class="com.nri.model.Order">
+		<property name="ordid" value="11"/>
+		<property name="orname" value="Farm Fresh Pizza"/>
+	</bean>
+	<bean name="ordtwo" class="com.nri.model.Order">
+		<property name="ordid" value="12"/>
+		<property name="orname" value="King Size Burger"/>
+	</bean>
+	<bean name="priceone" class="com.nri.model.Price">
+		<property name="pid" value="41"></property>
+		<property name="price" value="800"></property>
+	</bean>
+	<bean name="pricetwo" class="com.nri.model.Price">
+		<property name="pid" value="43"></property>
+		<property name="price" value="600"></property>
+	</bean>
+	<bean name="custbean" class="com.nri.model.Customer">
+		<property name="cid" value="101"></property>
+		<property name="cname" value="Vicky Oberoi"></property>
+		
+		<property name="toppings">
+			<map>
+				<entry key="Veg" value="Capsicum with slices of tomato"></entry>
+				<entry key="NonVeg" value="Boneless chilli chicken"></entry>
+			</map>
+		</property>
+		<property name="ordprice">
+			<map>
+				<entry key-ref="ordone" value-ref="priceone"/>
+				<entry key-ref="ordtwo" value-ref="pricetwo"/>
+			</map>
+		</property>
+	</bean>
+</beans>

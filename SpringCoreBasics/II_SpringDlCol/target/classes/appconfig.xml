@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean name="ordone" class="com.nri.model.Order">
+		<property name="ordid" value="11"/>
+		<property name="oname" value="Farm Fresh Pizza"/>
+	</bean>
+	<bean name="ordtwo" class="com.nri.model.Order">
+		<property name="ordid" value="12"/>
+		<property name="oname" value="King Size Burger"/>
+	</bean>
+	
+	<bean name="adrone" class="com.nri.model.Address">
+		<property name="aid" value="51"/>
+		<property name="city" value="Barrackpore"/>
+	</bean>
+	
+	<bean name="adrtwo" class="com.nri.model.Address">
+		<property name="aid" value="52"/>
+		<property name="city" value="Rajarhat"/>
+	</bean>
+	
+	<bean name="adrthree" class="com.nri.model.Address">
+		<property name="aid" value="53"/>
+		<property name="city" value="Salt Lake"/>
+	</bean>
+	
+	<bean name="creditone" class="com.nri.model.CreditCard">
+		<property name="cardid" value="101"/>
+		<property name="cardname" value="SBI Credit Card"/>
+	</bean>
+	
+	<bean name="credittwo" class="com.nri.model.CreditCard">
+		<property name="cardid" value="102"/>
+		<property name="cardname" value="HDFC Credit Card"/>
+	</bean>
+	<bean name="creditthree" class="com.nri.model.CreditCard">
+		<property name="cardid" value="103"/>
+		<property name="cardname" value="PNB Credit Card"/>
+	</bean>
+	
+	<bean name="custone" class="com.nri.model.Customer">
+		<property name="cid" value="501"/>
+		<property name="cname" value="Sunny Roy"/>
+		<property name="country" value="India"/>
+		<property name="order" ref="ordone"/>
+		
+		<!-- List Of Hobbies in primitive form -->
+		<property name="hobbies">
+			<list>
+				<value>Cooking</value>
+				<value>Gardening</value>
+				<value>Treaking</value>
+				<value>Cooking</value>
+			</list>
+		</property>
+		
+		<!-- List of Address which is reference type -->
+		<property name="address">
+			<list>
+				<ref bean="adrone"/>
+				<ref bean="adrtwo"/>
+				<ref bean="adrthree"/>
+				<ref bean="adrone"/>
+			</list>
+		</property>
+		<!-- Set Of Pets In Primitive Form -->
+		<property name="pets">
+			<set>
+				<value>Rabbit</value>
+				<value>Squirrel</value>
+				<value>Dog</value>
+				<value>Rabbit</value>
+			</set>
+		</property>
+		<!-- Set of Credit Card - A reference Data Form -->
+		<property name="card">
+			<set>
+				<ref bean="creditone"/>
+				<ref bean="credittwo"/>
+				<ref bean="creditthree"/>
+			</set>
+		</property>
+	</bean>
+</beans>
