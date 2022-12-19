@@ -1,0 +1,75 @@
+package com.nrifintech.sbrest.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.nrifintech.sbrest.entities.Course;
+
+@Service   //To make it Service Layer
+public class CourseServiceImpl implements CourseService{
+	
+	List<Course> list;
+	
+	public CourseServiceImpl() {
+		list = new ArrayList();
+		list.add(new Course(101, "Servlet API", "Course on traditional java web development"));
+		list.add(new Course(102, "Spring Framework", "Course on advanced java web development"));
+	}
+	
+	
+	@Override
+	public List<Course> getCourses() {
+		return list;
+	}
+
+
+	@Override
+	public Course getCourse(long courseId) {
+		Course c = null;
+		for(Course cr: list) {
+			if (cr.getCourseId() == courseId) {
+				c = cr;
+				break;
+			}
+		}
+		return c;
+	}
+
+
+	@Override
+	public Course addCourse(Course c) {
+		list.add(c);
+		return c;
+	}
+
+
+	@Override
+	public Course updateCourse(Course c) {
+
+		list.forEach(cobj->{
+			if(cobj.getCourseId() == c.getCourseId()) {
+				cobj.setCourseName(c.getCourseName());
+				cobj.setCourseDescription(c.getCourseDescription());
+			}
+		});
+		return c;
+	}
+
+
+	@Override
+	public void deleteCourse(long courseId) {
+		
+		Course c = null;
+		for(Course cr:list) {
+			if (cr.getCourseId() == courseId){
+				c = cr;
+				break;
+			}
+		}
+		list.remove(c);
+	}
+	
+	
+}
